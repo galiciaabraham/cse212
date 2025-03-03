@@ -1,3 +1,5 @@
+using System.Linq.Expressions;
+
 public static class ArraySelector
 {
     public static void Run()
@@ -11,6 +13,17 @@ public static class ArraySelector
 
     private static int[] ListSelector(int[] list1, int[] list2, int[] select)
     {
-        return [];
+    //     var result<Array[int]>;
+    //     foreach (int selected in select)
+    //     {
+    //         if (selected == 1){
+    //             for (int i = 0; i < list1.length;list1. i++)
+    //   list1.          {
+                    
+    //             }
+    //             result.Add()
+    //         }
+    //     }
+    return [];
     }
 }
