@@ -12,8 +12,37 @@ public static class Arrays
         // Remember: Using comments in your program, write down your process for solving this problem
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
-
-        return []; // replace this return statement with your own
+        
+        //Step 1.
+        //Define a List that will hold the returned multiples, and an array that will be returned since the method is supposed to return an array and not a List.
+        List <double> multiples = new List<double>{};
+        double [] multiplesArray = {};
+        //Step 2. 
+        //Limit the function by returning an array with 0, if either number or length is 0 to avoid unnecessary iterations, and conver the List to an Array.
+        if (number == 0 || length == 0)
+        {
+            multiplesArray.Append(0);
+            return multiplesArray;
+        }
+        //Step 3.
+        //Create a loop that will iterate by the length parameter.
+        //Step 4.
+        //Within the loop, multiply the number parameter by the next iteration number until the length number is reached.
+        //Step 5.
+        //Add the multiple to the multiples array.
+        else
+        {
+            for (int i = 1; i <= length; i++)
+            {
+                double multiple = number * i;
+                multiples.Add(multiple);
+            }
+        }
+        
+        //Step 6. 
+        //Conver the Dynamic Array (List) to an Array. Return the array.
+        multiplesArray = multiples.ToArray();
+        return multiplesArray; // replace this return statement with your own
     }
 
     /// <summary>
@@ -29,5 +58,15 @@ public static class Arrays
         // Remember: Using comments in your program, write down your process for solving this problem
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
+
+        //Step 1.
+        //Create a new rotatory list and use the GetRange method to create a new List with the selected rotatory data.
+        List<int> rotatoryData = data.GetRange(data.Count - amount, amount);
+        //Step 2.
+        //Use RemoveRange method to delete the data from the selected rotation
+        data.RemoveRange(data.Count - amount, amount);
+        //Step 3.
+        //Use InsertRange method to insert the previously created List at the beginning of the original list. 
+        data.InsertRange(0,rotatoryData);
     }
 }
