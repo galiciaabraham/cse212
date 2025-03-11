@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 // TODO Problem 1 - Run test cases and record any defects the test code finds in the comment above the test method.
@@ -12,6 +13,8 @@ public class TakingTurnsQueueTests
     // run until the queue is empty
     // Expected Result: Bob, Tim, Sue, Bob, Tim, Sue, Tim, Sue, Tim, Tim
     // Defect(s) Found: 
+    // In the PersonQueue.cs, line 16, the Enqueue method was insterting the next person into the index 0 instead of adding it to the last place in line. 
+    
     public void TestTakingTurnsQueue_FiniteRepetition()
     {
         var bob = new Person("Bob", 2);
@@ -86,6 +89,7 @@ public class TakingTurnsQueueTests
     // Run 10 times.
     // Expected Result: Bob, Tim, Sue, Bob, Tim, Sue, Tim, Sue, Tim, Tim
     // Defect(s) Found: 
+    // The TakingTurnsQueue handled cases when persons had any number of turns beyond 1 but not 0. Added an else if statement to handle cases where turns are 0.
     public void TestTakingTurnsQueue_ForeverZero()
     {
         var timTurns = 0;
@@ -117,6 +121,7 @@ public class TakingTurnsQueueTests
     // Run 10 times.
     // Expected Result: Tim, Sue, Tim, Sue, Tim, Sue, Tim, Tim, Tim, Tim
     // Defect(s) Found: 
+    // The GetNextPerson method did not handle cases where turns were less than 0. Modified previous else if statement to include cases where turns were less than 0 (infinite).
     public void TestTakingTurnsQueue_ForeverNegative()
     {
         var timTurns = -3;
