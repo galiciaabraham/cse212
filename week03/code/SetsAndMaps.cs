@@ -21,8 +21,27 @@ public static class SetsAndMaps
     /// <param name="words">An array of 2-character words (lowercase, no duplicates)</param>
     public static string[] FindPairs(string[] words)
     {
-        // TODO Problem 1 - ADD YOUR CODE HERE
-        return [];
+        List<string> pairs = new List<string>();
+        HashSet<string> inTheList = new HashSet<string>();
+
+        foreach(string word in words)
+        {
+            char[] charWord = word.ToLower().ToCharArray();
+            string word_backwards = charWord[1].ToString() + charWord[0].ToString();
+
+            if (charWord[0] == charWord[1]){
+                continue; //do nothing;
+            }
+
+            if (inTheList.Contains(word_backwards))
+            {
+                pairs.Add($"{word} & {word_backwards}");
+            } else {
+                inTheList.Add(word);
+            }
+
+        }
+        return pairs.ToArray();
     }
 
     /// <summary>
