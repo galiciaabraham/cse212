@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Threading.Tasks.Dataflow;
 
 public static class Recursion
 {
@@ -15,7 +16,12 @@ public static class Recursion
     public static int SumSquaresRecursive(int n)
     {
         // TODO Start Problem 1
-        return 0;
+        if (n <= 0) // Base case, once the recursive call reaches 0 it will stop.
+        {
+            return 0;
+        }
+        var operationResult = n * n + SumSquaresRecursive(n-1); // This operation will elevate n to square and then substract 1 from n. This is the recursive call.
+        return operationResult; //Once the base case is reached the sum of all the numbers from 0 to n is returned. 
     }
 
     /// <summary>
