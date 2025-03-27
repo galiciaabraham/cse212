@@ -1,5 +1,7 @@
 using System.Collections;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks.Dataflow;
+using System.Diagnostics;
 
 public static class Recursion
 {
@@ -43,9 +45,31 @@ public static class Recursion
     /// You can assume that the size specified is always valid (between 1 
     /// and the length of the letters list).
     /// </summary>
+    
     public static void PermutationsChoose(List<string> results, string letters, int size, string word = "")
     {
         // TODO Start Problem 2
+        if (word.Length == size) //Base case, once the word has reached the requested size, the recursion will stop and add the word to results.
+        {
+            results.Add(word);
+            return;
+        }
+
+        for (int i = 0; i < letters.Length ; i++)
+        {
+            var nonUsedLetters = letters.Remove(i, 1);
+            PermutationsChoose(results, nonUsedLetters, size, word + letters[i]); //The recursive call uses a loop to go through the letters and create a new word with the found permutations.
+        }
+        
+    }
+
+    private static int getFactorial(int n)
+    {
+        if (n <= 1) //Base case
+        {
+            return 1;
+        }
+        return n * getFactorial(n-1); //Recursive call
     }
 
     /// <summary>
